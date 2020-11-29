@@ -22,9 +22,9 @@ public class IA {
 
     //Constructeur
     public IA(int difficulte){
-        if (difficulte > 1 && difficulte < 5){
+        if (difficulte >= 1 && difficulte <= 5){
             this.difficulte = difficulte;
-        }
+        }else this.difficulte=2;
     }
 
 
@@ -34,12 +34,16 @@ public class IA {
         //Recuperation des faiblesse de l'adversaire
         List<String> advFaiblesses = adverse.getFaiblesses();
         //Modification des coeffs
+        initialiseProba();
         for (Coup i : listCoup.keySet()) {
-            if (advFaiblesses.contains(i.getNom())) {
-                if (listCoup.containsKey(i))
+            for(String s: advFaiblesses){
+                if ( s==i.getNom()){
                     listCoup.put(i, listCoup.get(i) * difficulte);
+                    System.out.println("test = "+ listCoup.get(i) +"difficulte ="+ difficulte);
+                }
             }
         }
+
         //Coefficient de la faiblesse multiplié par la difficulté
         //Generation d'un coup aleatoire dans la liste
         double rand = Math.random();
@@ -57,5 +61,19 @@ public class IA {
         return null;
 
     }
+    private void initialiseProba() {
+        Map<Coup, Double> defaultListCoup = new HashMap<Coup, Double>(){
+            {
+                put(new Pierre(), 0.2);
+                put(new Feuille(), 0.2);
+                put(new Ciseau(), 0.2);
+                put(new Lezard(), 0.2);
+                put(new Spock(), 0.2);
+            }
+
+        };
+        this.listCoup=defaultListCoup;
+    }
+
 
 }

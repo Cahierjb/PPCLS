@@ -1,13 +1,17 @@
 package esiee.andoid.ppcls.model;
 
+import androidx.annotation.Nullable;
+
+import java.net.URI;
 import java.util.List;
 
 public abstract class Coup implements Comparable<Coup> {
 
     //Attributs
     private String nom;
-    private String image;
+    private int image;
     protected List<String> faiblesses;
+
 
     //Constructeur
     public Coup(String nom) {
@@ -31,11 +35,11 @@ public abstract class Coup implements Comparable<Coup> {
         this.faiblesses = faiblesses;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
@@ -51,11 +55,20 @@ public abstract class Coup implements Comparable<Coup> {
     @Override
     public int compareTo(Coup adverse) {
         int result = 0;// Result vaut 0 victoire sur l'adverse sinon defaite
+        if(this.equals(adverse)){
+            result= -1;
+        }
         for (String coup : faiblesses){
             if (coup == adverse.getNom()) {
                 result = 1;
             }
         }
         return result;
+    }
+
+
+    public boolean equals(Coup otherCoup) {
+        if(otherCoup.getNom()==this.getNom()) return true;
+        return false;
     }
 }

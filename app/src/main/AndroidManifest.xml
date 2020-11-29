@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PPCLS">
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.game.GameActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.PPCLS.NoActionBar">
             <intent-filter>

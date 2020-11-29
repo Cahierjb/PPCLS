@@ -17,6 +17,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866"
         app:srcCompat="@drawable/copy"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/copy"
         tools:srcCompat="@drawable/copy" />
 
     <ImageView
@@ -31,6 +34,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866"
         app:srcCompat="@drawable/scissors"
+        android:background="@drawable/scissors"
+        android:clickable="true"
+        android:focusable="true"
         tools:srcCompat="@drawable/scissors" />
 
     <ImageView
@@ -45,6 +51,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866"
         app:srcCompat="@drawable/lizard"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/lizard"
         tools:srcCompat="@drawable/lizard" />
 
     <ImageView
@@ -59,6 +68,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866"
         app:srcCompat="@drawable/spock"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/spock"
         tools:srcCompat="@drawable/spock" />
 
     <ImageView
@@ -73,6 +85,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.42"
         app:srcCompat="@drawable/battle"
+        android:background="@drawable/battle"
         tools:srcCompat="@drawable/battle" />
 
     <TextView
@@ -103,12 +116,12 @@
         android:id="@+id/bar"
         android:layout_width="383dp"
         android:layout_height="32dp"
+        android:background="@drawable/minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758"
+        app:layout_constraintVertical_bias="0.788"
         app:srcCompat="@drawable/minus" />
 
     <androidx.appcompat.widget.Toolbar
@@ -159,6 +172,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.424"
+
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -171,21 +185,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.424"
+
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/pierre"
-        android:layout_width="78dp"
-        android:layout_height="46dp"
-        app:icon="@drawable/rock"
+
+
+    <ImageView
+        android:id="@+id/pierreimg"
+        android:layout_width="62dp"
+        android:layout_height="59dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.851"
-        app:srcCompat="@drawable/spock"
-        tools:srcCompat="@drawable/spock" />
+        app:layout_constraintVertical_bias="0.867"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/rock"
+        app:srcCompat="@drawable/rock" />
+
+    <Button
+        android:id="@+id/playbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jouer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
