@@ -29,4 +29,7 @@
     <string name="player1score">score1</string>
     <string name="player2score">score2</string>
     <string name="versus">versus</string>
+    <string name="Homme">Homme</string>
+    <string name="Femme">Femme</string>
+    <string name="Email">Email</string>
 </resources>

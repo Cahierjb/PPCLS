@@ -170,6 +170,7 @@
 
 
     <RadioGroup
+        android:id="@+id/quelgenre"
         android:layout_width= "0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -182,13 +183,13 @@
             android:id="@+id/radioButton"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:text="Homme" />
+            android:text="@string/Homme" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:text="Femme" />
+            android:text="@string/Femme" />
     </RadioGroup>
 
     <TextView

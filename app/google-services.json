@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "185293302172",
+    "firebase_url": "https://ppcls-1f8e2.firebaseio.com",
+    "project_id": "ppcls-1f8e2",
+    "storage_bucket": "ppcls-1f8e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185293302172:android:b2f30a1c66f73f8dd04059",
+        "android_client_info": {
+          "package_name": "esiee.andoid.ppcls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185293302172-a0arv88gtcpqllkooet2u5g7d40d5f94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdxHo78ekVVVpJIK9sKGkEuOpAMsA4OCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185293302172-a0arv88gtcpqllkooet2u5g7d40d5f94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

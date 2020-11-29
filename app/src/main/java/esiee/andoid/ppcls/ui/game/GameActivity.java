@@ -1,6 +1,7 @@
 package esiee.andoid.ppcls.ui.game;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +15,16 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.sql.SQLOutput;
+
 import esiee.andoid.ppcls.R;
 import esiee.andoid.ppcls.model.*;
 
 public class GameActivity  extends Activity {
 
-
+    private int score1 =0;
+    private int score2=0;
+    private int manche=0;
     private Button jouer;
     private Toolbar toolbar;
     private ImageView pierreimg,papierimg,ciseauimg,lezardimg,spockimg,versusimg,bar, player1choice,player2choice;
@@ -106,7 +111,7 @@ public class GameActivity  extends Activity {
 
         /*while(Integer.getInteger(player1score.getText().toString()) < 3  || Integer.getInteger(player2score.getText().toString()) < 3 ){
             //Le jouer choisis son coup
-            Coup coupJoueur = new Pierre();
+
             //L'IA
 
         }*/
@@ -119,17 +124,56 @@ public class GameActivity  extends Activity {
     }
 
     private void play(){
+
         coupj2 = ordinateur.Joue(coupj1);
         player2choice.setBackground(ContextCompat.getDrawable(getBaseContext(), coupj2.getImage()));
         int result = coupj1.compareTo(coupj2);
+        manche=manche+1;
         if (result==0){
             System.out.println("j1 gagne!");
+             score1=score1+1;
+             isWin();
+             player1score.setText(String.valueOf(score1));
+             System.out.println("le joueur 1 à " + score1 +" point");
         }else if(result==-1) {
             System.out.println("égalité");
+            System.out.println("le joueur 2 à " + score2 +" point");
         }else{
             System.out.println("ordinateur win");
+            score2=score2+1;
+            isWin();
+            player2score.setText(String.valueOf(score2));
+            System.out.println("le joueur 2 à " + score2 +" point");
         }
 
+    }
+
+    private void isWin(){
+        if(manche <=5 && score1==3){
+            System.out.println("le joueur 1 a gagné");
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
+            builder1.setMessage("Write your message here.");
+            builder1.setCancelable(true);
+        }
+        if(manche <=5 && score2==3){
+            System.out.println("l' ordinateur a gagné");
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
+            builder1.setMessage("Write your message here.");
+            builder1.setCancelable(true);
+        }
+        if(manche >5 && score2<3 && score1<3){
+            System.out.println("l' ordinateur a gagné");
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
+            builder1.setMessage("Write your message here.");
+            builder1.setCancelable(true);
+        }
+
+    }
+
+    public void finPartie(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
+        builder1.setMessage("Write your message here.");
+        builder1.setCancelable(true);
     }
 
 

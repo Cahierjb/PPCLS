@@ -27,9 +27,34 @@ public class User {
     }
 
 
+
+
     //Getter and Setter
 
-    //Mehtodes
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+//Mehtodes
 
 
 }
