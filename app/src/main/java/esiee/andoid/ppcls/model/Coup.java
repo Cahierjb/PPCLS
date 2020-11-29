@@ -1,4 +1,4 @@
-package devandroid.ppcls.model;
+package esiee.andoid.ppcls.model;
 
 import java.util.List;
 

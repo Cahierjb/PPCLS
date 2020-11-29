@@ -50,7 +50,7 @@ public class GameActivity  extends Activity {
 
 
 
-        while(player1score.getText() < '3' || player2score.getText() < '3'){
+        while(Integer.getInteger(player1score.getText().toString()) < 3  || Integer.getInteger(player2score.getText().toString()) < 3 ){
             //Le jouer choisis son coup
             Coup coupJoueur = new Pierre();
             //L'IA
@@ -63,11 +63,5 @@ public class GameActivity  extends Activity {
 
     }
 
-
-
-
-
-
-    }
 
 }

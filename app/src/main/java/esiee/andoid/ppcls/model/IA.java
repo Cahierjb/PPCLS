@@ -1,10 +1,9 @@
-package devandroid.ppcls.model;
+package esiee.andoid.ppcls.model;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import devandroid.ppcls.model.*;
 
 public class IA {
 
