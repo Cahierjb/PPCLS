@@ -5,16 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/viewLastname3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lastname"
-        app:layout_constraintBottom_toTopOf="@+id/lastname_guideline"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/firstname_guideline" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_title"
         android:layout_width="wrap_content"
@@ -212,15 +202,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/firstname_guideline" />
 
-    <TextView
-        android:id="@+id/viewLastname2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lastname"
-        app:layout_constraintBottom_toTopOf="@+id/lastname_guideline"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/firstname_guideline" />
 
     <TextView
         android:id="@+id/viewUsername"
@@ -229,23 +210,11 @@
         android:text="Username"
         app:layout_constraintBottom_toTopOf="@+id/username_guideline"
         app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mail_guideline"
-        app:layout_constraintVertical_bias="0.444" />
-
-    <Button
-        android:id="@+id/Submit_button"
-        android:layout_width="fill_parent"
-        android:layout_height="70dp"
-        android:text="Enregistrer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/submit_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/mail_guideline" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/viewAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Age"
@@ -269,16 +238,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genre"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="244dp" />
+        app:layout_constraintBottom_toTopOf="@+id/gender_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lastname_guideline" />
 
     <TextView
         android:id="@+id/viewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mot de passe"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="537dp" />
+        app:layout_constraintBottom_toTopOf="@+id/password_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/username_guideline"/>
+
+    <Button
+        android:id="@+id/Submit_button"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:text="Enregistrer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/submit_guideline" />
+    
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
