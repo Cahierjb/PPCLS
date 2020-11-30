@@ -35,11 +35,22 @@ public class IA {
         List<String> advFaiblesses = adverse.getFaiblesses();
         //Modification des coeffs
         initialiseProba();
-        for (Coup i : listCoup.keySet()) {
-            for(String s: advFaiblesses){
-                if ( s==i.getNom()){
-                    listCoup.put(i, listCoup.get(i) * difficulte);
-                    System.out.println("test = "+ listCoup.get(i) +"difficulte ="+ difficulte);
+        if(difficulte > 2){
+            for (Coup i : listCoup.keySet()) {
+                for(String s: advFaiblesses){
+                    if ( s==i.getNom()){
+                        listCoup.put(i, listCoup.get(i) * difficulte);
+                        System.out.println("test = "+ listCoup.get(i) +"difficulte ="+ difficulte);
+                    }
+                }
+            }
+        }else {
+            for (Coup i : listCoup.keySet()) {
+                for(String s: advFaiblesses){
+                    if ( s==i.getNom()){
+                        listCoup.put(i, listCoup.get(i) * (difficulte/10));
+                        System.out.println("test = "+ listCoup.get(i) +"difficulte ="+ difficulte);
+                    }
                 }
             }
         }

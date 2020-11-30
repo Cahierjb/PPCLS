@@ -59,7 +59,8 @@ public class GameActivity  extends Activity {
         player2=(TextView)findViewById(R.id.player2);
         player2score=(TextView)findViewById(R.id.player2score);
         //TextView
-        ordinateur=new IA(1);
+        Bundle extras = getIntent().getExtras();
+        ordinateur=new IA(extras.getInt("difficulte"));
 
         pierreimg.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
