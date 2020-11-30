@@ -1,5 +1,6 @@
 package esiee.andoid.ppcls.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import esiee.andoid.ppcls.R;
+import esiee.andoid.ppcls.ui.game.GameActivity;
 
 public class FirstFragment extends Fragment {
 
@@ -25,7 +27,15 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.lancerLeJeu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent game = new Intent(getContext(), GameActivity.class);
+                startActivity(game);
+            }
+        });
+
+        view.findViewById(R.id.leaderBoard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
