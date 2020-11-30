@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService;
+
 import esiee.andoid.ppcls.R;
 import esiee.andoid.ppcls.ui.game.GameActivity;
 
@@ -30,7 +32,7 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.lancerLeJeu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent game = new Intent(getContext(), GameActivity.class);
+                Intent game = new Intent(FirstFragment.super.getActivity(), GameActivity.class);
                 startActivity(game);
             }
         });

@@ -9,15 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import esiee.andoid.ppcls.model.User;
-import esiee.andoid.ppcls.ui.login.LoginActivity;
-import esiee.andoid.ppcls.ui.login.RegisterActivity;
+
 
 public class askToDb {
 
@@ -46,7 +43,6 @@ public class askToDb {
 
 
     public static void ajoutDonnees(String Firstname, String Lastname, String Age, String valuegenre, String Username, String Email){
-        boolean result = false;
         Map<String, Object> user = new HashMap<>();
         user.put("Firstname", Firstname);
         user.put("Lastname", Lastname);
@@ -72,27 +68,6 @@ public class askToDb {
 
     public void SauvegardeScoreUser(String Username, int Score){
         boolean result = false;
-        Map<String, Object> user = new HashMap<>();
-        user.put("Firstname", Firstname);
-        user.put("Lastname", Lastname);
-        user.put("Age", Age);
-        user.put("Gender", valuegenre);
-        user.put("Username", Username);
-        user.put("Email", Email);
-        db.collection("user").document(Email)
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
     }
 
 

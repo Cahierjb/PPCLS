@@ -24,19 +24,17 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
-    }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         // Add the following lines to create RecyclerView
-        leaderBoard = view.findViewById(R.id.recyclerView);
+        leaderBoard = view.findViewById(R.id.leaderBoard);
         leaderBoard.setHasFixedSize(true);
         leaderBoard.setLayoutManager(new LinearLayoutManager(view.getContext()));
         leaderBoard.setAdapter(new UserScoreAdapter());
 
-
+        return view;
     }
+
 }
