@@ -8,19 +8,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import esiee.andoid.ppcls.R;
 
+public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-public class RecyclerViewHolder {
+        private TextView user_name;
+        private TextView user_score;
 
-    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView view;
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            view = itemView.findViewById(R.id.randomText);
+            user_name = itemView.findViewById(R.id.user_name);
+            user_name = itemView.findViewById(R.id.user_score);
         }
 
-        public TextView getView(){
-            return view;
+        public TextView getUser_name(){
+            return user_name;
         }
-    }
+        public TextView getUser_score(){
+            return user_score;
+        }
 }

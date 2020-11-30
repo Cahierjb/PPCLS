@@ -109,14 +109,6 @@ public class GameActivity  extends Activity {
             }
         });
 
-        /*while(Integer.getInteger(player1score.getText().toString()) < 3  || Integer.getInteger(player2score.getText().toString()) < 3 ){
-            //Le jouer choisis son coup
-
-            //L'IA
-
-        }*/
-
-
     }
 
     private void initialisation(){

@@ -35,7 +35,7 @@ public class SecondFragment extends Fragment {
         leaderBoard = view.findViewById(R.id.recyclerView);
         leaderBoard.setHasFixedSize(true);
         leaderBoard.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        leaderBoard.setAdapter(new UserAdapter(1234));
+        leaderBoard.setAdapter(new UserScoreAdapter());
 
 
     }

@@ -36,17 +36,6 @@ public class LoginActivity extends Activity {
         password = (EditText) findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
 
-       /* register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Asking to DB if we have an user with this name, if yes, get password and compare them with the pasw given by user
-                boolean canConnect = askToDb.userExist(username.getText().toString(), password.getText().toString());
-                if (canConnect = true){
-                  //  currentUser =  askToDb.getUser();
-                }
-
-            }
-        });*/
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override

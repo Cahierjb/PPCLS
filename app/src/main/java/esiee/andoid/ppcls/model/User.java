@@ -9,6 +9,7 @@ public class User {
     private int age;
     private String mail;
     private String username;
+    private int score;
 
     //Constructeurs
     public User(String firstName, String lastName, char gender, int age, String username,String mail) {
@@ -18,15 +19,23 @@ public class User {
         this.age = age;
         this.mail = mail;
         this.username = username;
+        this.score = 0;
     }
 
-    public User(String account) {
-        if (account.contains("@"))
-            this.mail = account;
-        else this.username = account;
+    public User(String firstName, String lastName, char gender, int age, String mail, String username, int score) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.mail = mail;
+        this.username = username;
+        this.score = score;
     }
 
-
+    public User(String username, int score) {
+        this.username = username;
+        this.score = score;
+    }
 
 
     //Getter and Setter
@@ -54,7 +63,13 @@ public class User {
     public String getUsername() {
         return username;
     }
-//Mehtodes
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
 }

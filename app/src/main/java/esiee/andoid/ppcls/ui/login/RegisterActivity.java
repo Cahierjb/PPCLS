@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import esiee.andoid.ppcls.R;
+import esiee.andoid.ppcls.controllers.askToDb;
 
 
 public class RegisterActivity extends Activity {
@@ -59,14 +60,14 @@ public class RegisterActivity extends Activity {
                Gender=(RadioButton) findViewById(selected);
                String valuegenre= Gender.getText().toString();
                System.out.println(valuegenre);
-                ajoutDonnees(valuegenre);
-                Register(Firstname.getText().toString(),Lastname.getText().toString(),Age.getText().toString(),valuegenre,Username.getText().toString(),Email.getText().toString(),Password.getText().toString());
+                askToDb.ajoutDonnees(Firstname.getText().toString(),Lastname.getText().toString(),Age.getText().toString(),valuegenre,Username.getText().toString(),Email.getText().toString());
+                Register(Email.getText().toString(),Password.getText().toString());
             }
         });
     }
 
 
-    public void Register( String Firstname, String Lastname, String Age, String Gender, String Username ,String email, String password){
+    public void Register(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
@@ -91,32 +92,7 @@ public class RegisterActivity extends Activity {
                 });
     }
 
-    public void ajoutDonnees(String genre){
-        Map<String, Object> user = new HashMap<>();
-        user.put("Firstname", Firstname.getText().toString());
-        user.put("Lastname", Lastname.getText().toString());
-        user.put("Age", Age.getText().toString());
-        user.put("Gender", genre);
-        user.put("Username", Username.getText().toString());
-        user.put("Email", Email.getText().toString());
-        user.put("Password", Password.getText().toString());
-        String mail=Email.getText().toString();
 
-        db.collection("user").document(mail)
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
-    }
 
 
 }
