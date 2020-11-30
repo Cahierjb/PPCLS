@@ -2,12 +2,14 @@ package esiee.andoid.ppcls.ui.game;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -31,10 +33,12 @@ public class GameActivity  extends Activity {
     private TextView  player1,player1score,player2,player2score;
     private Coup coupj1,coupj2;
     private IA ordinateur;
+    AlertDialog.Builder builder;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
+        builder = new AlertDialog.Builder(this);
         //toolbar
         //button
         jouer=(Button)findViewById(R.id.playbutton);
@@ -126,6 +130,7 @@ public class GameActivity  extends Activity {
             System.out.println("j1 gagne!");
              score1=score1+1;
              isWin();
+             finPartie();
              player1score.setText(String.valueOf(score1));
              System.out.println("le joueur 1 à " + score1 +" point");
         }else if(result==-1) {
@@ -135,38 +140,117 @@ public class GameActivity  extends Activity {
             System.out.println("ordinateur win");
             score2=score2+1;
             isWin();
+            finPartie();
             player2score.setText(String.valueOf(score2));
             System.out.println("le joueur 2 à " + score2 +" point");
         }
 
     }
 
-    private void isWin(){
-        if(manche <=5 && score1==3){
+    public int isWin(){
+        if(manche <=5 && score1>=3){
             System.out.println("le joueur 1 a gagné");
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
-            builder1.setMessage("Write your message here.");
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("vous avez win.");
             builder1.setCancelable(true);
-        }
-        if(manche <=5 && score2==3){
-            System.out.println("l' ordinateur a gagné");
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
-            builder1.setMessage("Write your message here.");
-            builder1.setCancelable(true);
-        }
-        if(manche >5 && score2<3 && score1<3){
-            System.out.println("l' ordinateur a gagné");
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
-            builder1.setMessage("Write your message here.");
-            builder1.setCancelable(true);
-        }
 
+            Toast.makeText(this, "Vous avez gagné !",
+                    Toast.LENGTH_LONG).show();
+
+            return 1;
+        }
+        if(manche <=5 && score2>=3){
+            System.out.println("l' ordinateur a gagné");
+
+
+            Toast.makeText(this, "Vous avez perdu !",
+                    Toast.LENGTH_LONG).show();
+
+            return 0;
+        }
+        if(manche >=5 && score2<3 &&score1<3 ||manche >=5 &&  score2<3 && score1<3){
+            System.out.println("l' ordinateur a gagné");
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("ordinateur win.");
+            builder1.setCancelable(true);
+
+            Toast.makeText(this, "Vous avez perdu !",
+                    Toast.LENGTH_LONG).show();
+
+            return 0;
+        }else return 2;
     }
 
     public void finPartie(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(getBaseContext());
-        builder1.setMessage("Write your message here.");
-        builder1.setCancelable(true);
+        if(isWin()==1){
+
+            builder.setMessage(R.string.fin)  .setTitle(R.string.win);
+            //Setting message manually and performing action on button click
+
+            builder.setMessage("Bravo voulez vous rejouer ?")
+                    .setCancelable(false)
+                    .setPositiveButton("Quitter", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                            Toast.makeText(getApplicationContext(),"à une prochaine fois !",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    })
+                    .setNegativeButton("rejouer", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //  Action for 'NO' Button
+                            dialog.cancel();
+                            Toast.makeText(getApplicationContext(),"rejouons ensemble !",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.setTitle("");
+            alert.show();
+            score1=0;
+            score2=0;
+            manche=0;
+            player1score.setText(String.valueOf(score1));
+            player2score.setText(String.valueOf(score2));
+
+        }
+        else if(isWin()==0){
+
+            builder.setMessage(R.string.fin) .setTitle(R.string.ordiwin);
+            //Setting message manually and performing action on button click
+
+            builder.setMessage(" Dommage, Voulez Vous rejouer ?")
+                    .setCancelable(false)
+                    .setPositiveButton("Quitter", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                            Toast.makeText(getApplicationContext(),"à une prochaine fois !",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    })
+                    .setNegativeButton("rejouer", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //  Action for 'NO' Button
+                            dialog.cancel();
+                            Toast.makeText(getApplicationContext(),"rejouons ensemble !",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.setTitle("Fin de partie");
+            alert.show();
+            score1=0;
+            score2=0;
+            manche=0;
+            player1score.setText(String.valueOf(score1));
+            player2score.setText(String.valueOf(score2));
+        }
+
+
+
     }
 
 

@@ -36,4 +36,7 @@
     <string name="Homme">Homme</string>
     <string name="Femme">Femme</string>
     <string name="Email">Email</string>
+    <string name="fin">Fin de Partie</string>
+    <string name="ordiwin"> Vous avez perdu !</string>
+    <string name="win"> Vous avez gagné !</string>
 </resources>

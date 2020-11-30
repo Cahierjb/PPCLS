@@ -1,7 +1,6 @@
 package esiee.andoid.ppcls.controllers;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -9,8 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import esiee.andoid.ppcls.model.User;
@@ -42,7 +45,8 @@ public class askToDb {
     }
 
 
-    public static void ajoutDonnees(String Firstname, String Lastname, String Age, String valuegenre, String Username, String Email){
+    public static void ajoutDonnees(String Firstname, String Lastname, String Age, String valuegenre, String Username, String Email,int score){
+        boolean result = false;
         Map<String, Object> user = new HashMap<>();
         user.put("Firstname", Firstname);
         user.put("Lastname", Lastname);
@@ -50,6 +54,7 @@ public class askToDb {
         user.put("Gender", valuegenre);
         user.put("Username", Username);
         user.put("Email", Email);
+        user.put("Score", score);
         db.collection("user").document(Email)
                 .set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -66,9 +71,50 @@ public class askToDb {
                 });
     }
 
-    public void SauvegardeScoreUser(String Username, int Score){
+    public void SauvegardeScoreUser(String Email, int Score){
         boolean result = false;
+        int finalscore = Score;
+        Map<String, Object> user = new HashMap<>();
+        user.put("Score", Score);
+        db.collection("user").document(Email)
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
     }
+
+    public void recupscore() {
+        DocumentReference docRef = db.collection("user").document("Email");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+    }
+
+
+
 
 
 }
