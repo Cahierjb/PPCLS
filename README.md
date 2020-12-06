@@ -5,6 +5,7 @@
 
 ### Introduction
 Ce projet a pour objectif la création d'une application sous android de pierre feuille ciseaux revisité.
+Il a été réalisé sous android en JAVA.
 
 
 ### Authentification & Stockage de données
@@ -15,16 +16,23 @@ Ce projet a pour objectif la création d'une application sous android de pierre 
 ### Le Jeu 
 
 Le jeu se présente sous la forme d'un papier feuille ciseaux revisité en "tour par tour".
+Avant de pouvoir accéder au jeu il faut pouvoir s'authentifier via le bouton Sign in  ou se créé un compte via le bouton register
+Ces deux Activité vont récuperer l'ensemble des infos entrer par l'utilisateur pour soit verifier son existence dans la liste des user existant  soit crée une entrée dans la BDD et crée un utilisateur  pouvant accéder au jeu.
 
-Pour l'interface graphique du jeu nous avons Fait au plus simple avec une liste de coup disposer sur le bas de l'écran,  un tableau des scores  et une zone d'action
-ou le joueur et l'ordinateur devront confronté leurs choix 
+Une fois identifié l'utilisateur a alors le choix d'aller voir le tableau des scores ou de jouer en choissisant également le niveau de difficulté de l'IA
+Pour l'interface graphique du jeu en lui meme nous avons Fait au plus simple avec une liste de coup disposer sur le bas de l'écran,  un tableau des scores  et une zone d'action ou le joueur et l'ordinateur devront confronté leurs choix 
 
 
+### choix des coups
+Afin de rendre notre code évolutif nous avons décidé de crée une classe Coup qui sera hérité par tous les coup que nous avons créée ainsi si le jeu doit etre modifié nous aurons juste a crée le nouveau coup et les méthodes de base serait déja disponible. Aussi chaque coup dispose d'une liste de faiblesse, de cette maniere si le coup jouer par l'adversaire est compris dans cette liste le coup est directement battu.
 
-![Screenshot](https://github.com/Cahierjb/PPCLS/blob/main/PPCLSauth.PNG)
-![Screenshot](https://github.com/Cahierjb/PPCLS/blob/main/register.PNG)
-![Screenshot](https://github.com/Cahierjb/PPCLS/blob/main/PPCLSmenu.PNG)
-![Screenshot](https://github.com/Cahierjb/PPCLS/blob/main/PPCLS.PNG)
+### déroulement d'une partie  & fonctionnement de l'IA 
 
-### Tableau des scores
+Apres avoir choisi la difficulté de l'IA est lancer la partie  le jeu commence. le joueur a donc le choix entre pierre, feuille, ciseaux, lézard et spock
+le joueur entre son choix en selectionnant l'élément souhaiter et  le valide via un bouton.
+A partir de la et en fonction de la difficulté de l'IA  
+
+# @Cahierjb c'est pour toi maintenant 
+
+
 
