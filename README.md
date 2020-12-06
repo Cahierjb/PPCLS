@@ -30,9 +30,11 @@ Afin de rendre notre code évolutif nous avons décidé de crée une classe Coup
 
 Apres avoir choisi la difficulté de l'IA est lancer la partie  le jeu commence. le joueur a donc le choix entre pierre, feuille, ciseaux, lézard et spock
 le joueur entre son choix en selectionnant l'élément souhaiter et  le valide via un bouton.
-A partir de la et en fonction de la difficulté de l'IA  
+A partir de la et en fonction de la difficulté de l'IA 
 
-# @Cahierjb c'est pour toi maintenant 
+l'IA fonctionne avec une probabilités pour chaque coup de tomber qui est de base a 0,2. De cette manière si on augmente la difficulté la probabilités de tomber sur un coup qui vaincra le joueur augmente et de la meme maniere si on choisis une difficulté basse  on diminuera la probabilité de tomber sur un coup qui vaincra l'adversaire  en divisant le coefficient difficulté choisi par 10 
 
 
+Tu peux écrire vite fais l’ia dans le readme, je vais pas avoir le temps
+Il faut juste dire que c’est chaque coup a une proba de 0,2 et que si la difficulté est supérieure a deux on multiplie plie la proba par un coeff de la difficulté et sinon on divise la proba par un coeff de la difficulté divisée par 10
 
