@@ -14,8 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import esiee.andoid.ppcls.R;
+import esiee.andoid.ppcls.controllers.askToDb;
+import esiee.andoid.ppcls.model.User;
 
 public class MainActivity extends AppCompatActivity {
+
+    User currentUser = null;
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle extras = getIntent().getExtras();
-        getSupportActionBar().setTitle(extras.getString("email","Anonyme"));
-
+        String emailUser = extras.getString("email","Anonyme");
+        currentUser = askToDb.getUser(emailUser);
+        getSupportActionBar().setTitle(emailUser);
         
     }
 

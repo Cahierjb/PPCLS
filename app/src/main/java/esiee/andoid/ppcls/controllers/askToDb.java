@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 
 import esiee.andoid.ppcls.model.User;
 
@@ -35,11 +39,27 @@ public class askToDb {
 
 
     public static List<User> getListUsers(){
-        List<User> listTemp = null;
-        //Select from firebase "SELECT
+        List<User> listTemp = Arrays.asList();
+        System.out.println("hello");
+        DocumentReference docRef = db.collection("user").document("Email");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                System.out.println("hello2");
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        System.out.println("DocumentSnapshot data: " + document.getData());
 
-        //Pour chaque resultat de firebase, créé l'utilisateur et l'ajouté dans la liste
-
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
         return listTemp;
 
     }
@@ -71,7 +91,7 @@ public class askToDb {
                 });
     }
 
-    public void SauvegardeScoreUser(String Email, int Score){
+    public static void SauvegardeScoreUser(String Email, int Score){
         boolean result = false;
         int finalscore = Score;
         Map<String, Object> user = new HashMap<>();
@@ -92,26 +112,12 @@ public class askToDb {
                 });
     }
 
-    public void recupscore() {
-        DocumentReference docRef = db.collection("user").document("Email");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+    public static User getUser(String email){
+        User currentUser = null;
 
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-
+        return currentUser;
     }
+    
 
 
 

@@ -1,6 +1,8 @@
 package esiee.andoid.ppcls.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     //Attributs
     private String firstName;

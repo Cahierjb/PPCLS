@@ -18,7 +18,9 @@ import esiee.andoid.ppcls.model.User;
 public class UserScoreAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     List<User> listUsers = null;
+
     public UserScoreAdapter() {
+
         listUsers = askToDb.getListUsers();
     }
 

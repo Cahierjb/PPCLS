@@ -56,8 +56,6 @@ public class FirstFragment extends Fragment {
             // Notification that the user has finished a touch gesture
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                text.setText("Difficulté de l'IA : " + progress + "/" + seekBar.getMax());
-
             }
 
         });
@@ -65,9 +63,11 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.lancerLeJeu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity activity = (MainActivity) getActivity();
                 Intent game = new Intent(FirstFragment.super.getActivity(), GameActivity.class);
                 Bundle bund = new Bundle();
                 bund.putInt("difficulte", seek.getProgress());
+                bund.putSerializable("currentUser", activity.getCurrentUser());
                 game.putExtras(bund);
                 startActivity(game);
             }
