@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +22,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import esiee.andoid.ppcls.model.User;
+import io.grpc.internal.JsonParser;
 
 
 public class askToDb {
 
     private static final String TAG = "TAG";
     private static FirebaseFirestore db;
+    private static List<User> listUsers = new ArrayList<User>();
 
     static{
         try{
@@ -38,34 +41,30 @@ public class askToDb {
     }
 
 
-    public static List<User> getListUsers(){
-        List<User> listTemp = Arrays.asList();
-        System.out.println("hello");
-        DocumentReference docRef = db.collection("user").document("Email");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                System.out.println("hello2");
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        System.out.println("DocumentSnapshot data: " + document.getData());
-
-                    } else {
-                        Log.d(TAG, "No such document");
+    public static void setListUsers(){
+        db.collection("user")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                User userTemp = new User(document.getString("Username"),document.getString("Score"));
+                                askToDb.listUsers.add(userTemp);
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
                     }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-        return listTemp;
-
+                });
     }
 
+    public static List<User> getListUsers() {
+        return listUsers;
+    }
 
-    public static void ajoutDonnees(String Firstname, String Lastname, String Age, String valuegenre, String Username, String Email,int score){
+    public static void ajoutDonnees(String Firstname, String Lastname, String Age, String valuegenre, String Username, String Email, String score){
         boolean result = false;
         Map<String, Object> user = new HashMap<>();
         user.put("Firstname", Firstname);
@@ -81,6 +80,7 @@ public class askToDb {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
+                        System.out.println("create");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -91,9 +91,8 @@ public class askToDb {
                 });
     }
 
-    public static void SauvegardeScoreUser(String Email, int Score){
+    public static void SauvegardeScoreUser(String Email, String Score){
         boolean result = false;
-        int finalscore = Score;
         Map<String, Object> user = new HashMap<>();
         user.put("Score", Score);
         db.collection("user").document(Email)
@@ -117,7 +116,7 @@ public class askToDb {
 
         return currentUser;
     }
-    
+
 
 
 

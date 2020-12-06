@@ -45,8 +45,12 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //Enregistrement(username.getText().toString(),password.getText().toString());
-                SignIn(Email.getText().toString(),password.getText().toString());
-
+                if (!Email.getText().toString().contentEquals("")  || !password.getText().toString().contentEquals("")){
+                    SignIn(Email.getText().toString(),password.getText().toString());
+                }else{
+                    Toast.makeText(LoginActivity.this, "Utilisateur ou mot de passe inccorect",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
 
         });

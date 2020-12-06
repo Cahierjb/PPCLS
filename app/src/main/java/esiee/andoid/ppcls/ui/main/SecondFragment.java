@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +30,7 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         // Add the following lines to create RecyclerView
-        leaderBoard = view.findViewById(R.id.leaderBoard);
+        leaderBoard = view.findViewById(R.id.LeaderBoard);
         leaderBoard.setHasFixedSize(true);
         leaderBoard.setLayoutManager(new LinearLayoutManager(view.getContext()));
         leaderBoard.setAdapter(new UserScoreAdapter());

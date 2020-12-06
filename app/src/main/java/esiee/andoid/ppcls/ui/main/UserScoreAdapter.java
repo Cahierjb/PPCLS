@@ -1,5 +1,6 @@
 package esiee.andoid.ppcls.ui.main;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class UserScoreAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     List<User> listUsers = null;
 
     public UserScoreAdapter() {
-
+        askToDb.setListUsers();
         listUsers = askToDb.getListUsers();
     }
 

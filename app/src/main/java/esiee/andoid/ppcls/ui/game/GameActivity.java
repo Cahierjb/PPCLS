@@ -189,7 +189,7 @@ public class GameActivity  extends Activity {
             player1score.setText(String.valueOf(score1));
             player2score.setText(String.valueOf(score2));
 
-            askToDb.SauvegardeScoreUser(player.getMail(), score1);
+            askToDb.SauvegardeScoreUser(player.getMail(), String.valueOf(score1));
             return 0;
         }else{
                 System.out.println("l' ordinateur a gagné");

@@ -11,7 +11,7 @@ public class User implements Serializable {
     private int age;
     private String mail;
     private String username;
-    private int score;
+    private String score;
 
     //Constructeurs
     public User(String firstName, String lastName, char gender, int age, String username,String mail) {
@@ -21,10 +21,10 @@ public class User implements Serializable {
         this.age = age;
         this.mail = mail;
         this.username = username;
-        this.score = 0;
+        this.score = "0";
     }
 
-    public User(String firstName, String lastName, char gender, int age, String mail, String username, int score) {
+    public User(String firstName, String lastName, char gender, int age, String mail, String username, String score) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -34,7 +34,7 @@ public class User implements Serializable {
         this.score = score;
     }
 
-    public User(String username, int score) {
+    public User(String username, String score) {
         this.username = username;
         this.score = score;
     }
@@ -66,11 +66,11 @@ public class User implements Serializable {
         return username;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }
 

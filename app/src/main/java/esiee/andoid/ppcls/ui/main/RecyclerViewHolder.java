@@ -16,7 +16,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             user_name = itemView.findViewById(R.id.user_name);
-            user_name = itemView.findViewById(R.id.user_score);
+            user_score = itemView.findViewById(R.id.user_score);
         }
 
         public TextView getUser_name(){

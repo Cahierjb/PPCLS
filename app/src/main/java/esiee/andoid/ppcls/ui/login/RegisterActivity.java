@@ -38,7 +38,7 @@ public class RegisterActivity extends Activity {
     private RadioButton Gender;
     private RadioGroup quelgenre;
     private FirebaseFirestore db;
-    int score;
+    String score;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
@@ -52,7 +52,7 @@ public class RegisterActivity extends Activity {
         Password = (EditText) findViewById(R.id.textPassword);
         Enregistrer =(Button) findViewById(R.id.Submit_button);
         quelgenre = (RadioGroup)findViewById(R.id.quelgenre);
-        score=0;
+        score= "0";
 
         Enregistrer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +61,8 @@ public class RegisterActivity extends Activity {
                Gender=(RadioButton) findViewById(selected);
                String valuegenre= Gender.getText().toString();
                System.out.println(valuegenre);
-                askToDb.ajoutDonnees(Firstname.getText().toString(),Lastname.getText().toString(),Age.getText().toString(),valuegenre,Username.getText().toString(),Email.getText().toString(),score);
-                Register(Email.getText().toString(),Password.getText().toString());
+               askToDb.ajoutDonnees(Firstname.getText().toString(),Lastname.getText().toString(),Age.getText().toString(),valuegenre,Username.getText().toString(),Email.getText().toString(),score);
+               Register(Email.getText().toString(),Password.getText().toString());
             }
         });
     }
